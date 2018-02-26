@@ -2,7 +2,8 @@ package com.geometricmethods.stl.map;
 
 import com.geometricmethods.stl.iterator.ReverseBidirectionalIterator;
 import com.geometricmethods.stl.iterator.ForwardIterator;
-import com.geometricmethods.stl.support.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 public class ReverseMapIterator<K,V> implements ReverseBidirectionalIterator<Pair<K,V>>
 {
@@ -26,13 +27,13 @@ public class ReverseMapIterator<K,V> implements ReverseBidirectionalIterator<Pai
 	@Override
 	public MapIterator<K,V> base()
 	{
-		return new MapIterator<K,V>( node.getNext() );
+		return new MapIterator<>( node.getNext() );
 	}
 	
 	@Override
 	public ReverseMapIterator<K,V> clone()
 	{
-		return new ReverseMapIterator<K,V>( this );
+		return new ReverseMapIterator<>( this );
 	}
 
 	@Override

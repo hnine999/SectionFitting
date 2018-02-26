@@ -3,10 +3,9 @@ package com.geometricmethods.stl.map;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.geometricmethods.stl.support.Pair;
 
 public class MapStlTest {
 
@@ -31,7 +30,7 @@ public class MapStlTest {
 
 	private ArrayList<MapStlNode<Integer,Integer>> prefix( MapStl<Integer,Integer> mapStl )
 	{
-		ArrayList<MapStlNode<Integer,Integer>> retval = new ArrayList<MapStlNode<Integer,Integer>>();
+		ArrayList<MapStlNode<Integer,Integer>> retval = new ArrayList<>();
 		prefix( mapStl.getRoot(), retval );
 		return retval;
 	}
@@ -45,8 +44,8 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 1 );		
@@ -67,8 +66,8 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 1 );		
@@ -81,8 +80,8 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 	}
 	
@@ -95,8 +94,8 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 1 );		
@@ -105,14 +104,14 @@ public class MapStlTest {
 		
 		mapStlNode = mapStlNodeList.get( 2 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 2L, (long)intIntPair.first );
-		Assert.assertEquals(-1L, (long)intIntPair.second );
+		Assert.assertEquals( 2L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
@@ -129,14 +128,14 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 2L, (long)intIntPair.first );
-		Assert.assertEquals(-1L, (long)intIntPair.second );
+		Assert.assertEquals( 2L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 2 );		
@@ -145,8 +144,8 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
@@ -155,8 +154,8 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 3L, (long)intIntPair.first );
-		Assert.assertEquals( 15L, (long)intIntPair.second );
+		Assert.assertEquals( 3L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 15L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 	}
 	
@@ -169,14 +168,14 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 2L, (long)intIntPair.first );
-		Assert.assertEquals(-1L, (long)intIntPair.second );
+		Assert.assertEquals( 2L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 2 );		
@@ -185,20 +184,20 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 4L, (long)intIntPair.first );
-		Assert.assertEquals( 6L, (long)intIntPair.second );
+		Assert.assertEquals( 4L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 6L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 3L, (long)intIntPair.first );
-		Assert.assertEquals( 15L, (long)intIntPair.second );
+		Assert.assertEquals( 3L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 15L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
@@ -215,20 +214,20 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 6L, (long)intIntPair.first );
-		Assert.assertEquals(-6L, (long)intIntPair.second );
+		Assert.assertEquals( 6L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-6L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 4L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 2L, (long)intIntPair.first );
-		Assert.assertEquals(-1L, (long)intIntPair.second );
+		Assert.assertEquals( 2L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 2 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 3 );		
@@ -237,62 +236,62 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 4L, (long)intIntPair.first );
-		Assert.assertEquals( 6L, (long)intIntPair.second );
+		Assert.assertEquals( 4L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 6L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 3L, (long)intIntPair.first );
-		Assert.assertEquals( 15L, (long)intIntPair.second );
+		Assert.assertEquals( 3L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 15L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 7 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 5L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 5L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 8 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 9 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 8L, (long)intIntPair.first );
-		Assert.assertEquals( 1L, (long)intIntPair.second );
+		Assert.assertEquals( 8L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 10 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 7L, (long)intIntPair.first );
-		Assert.assertEquals( 23L, (long)intIntPair.second );
+		Assert.assertEquals( 7L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 23L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 11 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 12 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 12L, (long)intIntPair.first );
-		Assert.assertEquals( 24L, (long)intIntPair.second );
+		Assert.assertEquals( 12L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 24L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 13 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 11L, (long)intIntPair.first );
-		Assert.assertEquals( 11L, (long)intIntPair.second );
+		Assert.assertEquals( 11L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 11L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 14 );		
@@ -309,20 +308,20 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 5L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 5L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 4L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 2L, (long)intIntPair.first );
-		Assert.assertEquals(-1L, (long)intIntPair.second );
+		Assert.assertEquals( 2L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 2 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 0L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 0L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 		
 		mapStlNode = mapStlNodeList.get( 3 );		
@@ -331,56 +330,56 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 4L, (long)intIntPair.first );
-		Assert.assertEquals( 6L, (long)intIntPair.second );
+		Assert.assertEquals( 4L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 6L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 3L, (long)intIntPair.first );
-		Assert.assertEquals( 15L, (long)intIntPair.second );
+		Assert.assertEquals( 3L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 15L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 7 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 8 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 8L, (long)intIntPair.first );
-		Assert.assertEquals( 1L, (long)intIntPair.second );
+		Assert.assertEquals( 8L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 9 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 7L, (long)intIntPair.first );
-		Assert.assertEquals( 23L, (long)intIntPair.second );
+		Assert.assertEquals( 7L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 23L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 10 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 11 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 12L, (long)intIntPair.first );
-		Assert.assertEquals( 24L, (long)intIntPair.second );
+		Assert.assertEquals( 12L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 24L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 12 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 11L, (long)intIntPair.first );
-		Assert.assertEquals( 11L, (long)intIntPair.second );
+		Assert.assertEquals( 11L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 11L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 13 );		
@@ -397,14 +396,14 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 5L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 5L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 4L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 2L, (long)intIntPair.first );
-		Assert.assertEquals(-1L, (long)intIntPair.second );
+		Assert.assertEquals( 2L, (long)intIntPair.getLeft() );
+		Assert.assertEquals(-1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 2 );		
@@ -413,56 +412,56 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 1L, (long)intIntPair.first );
-		Assert.assertEquals( 7L, (long)intIntPair.second );
+		Assert.assertEquals( 1L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 7L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 4L, (long)intIntPair.first );
-		Assert.assertEquals( 6L, (long)intIntPair.second );
+		Assert.assertEquals( 4L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 6L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 3L, (long)intIntPair.first );
-		Assert.assertEquals( 15L, (long)intIntPair.second );
+		Assert.assertEquals( 3L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 15L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 7 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 8L, (long)intIntPair.first );
-		Assert.assertEquals( 1L, (long)intIntPair.second );
+		Assert.assertEquals( 8L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 8 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 7L, (long)intIntPair.first );
-		Assert.assertEquals( 23L, (long)intIntPair.second );
+		Assert.assertEquals( 7L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 23L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 9 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 10 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 12L, (long)intIntPair.first );
-		Assert.assertEquals( 24L, (long)intIntPair.second );
+		Assert.assertEquals( 12L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 24L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 11 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 11L, (long)intIntPair.first );
-		Assert.assertEquals( 11L, (long)intIntPair.second );
+		Assert.assertEquals( 11L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 11L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 12 );		
@@ -479,14 +478,14 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 5L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 5L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 4L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 3L, (long)intIntPair.first );
-		Assert.assertEquals( 15L, (long)intIntPair.second );
+		Assert.assertEquals( 3L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 15L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 2 );		
@@ -495,44 +494,44 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 4L, (long)intIntPair.first );
-		Assert.assertEquals( 6L, (long)intIntPair.second );
+		Assert.assertEquals( 4L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 6L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 8L, (long)intIntPair.first );
-		Assert.assertEquals( 1L, (long)intIntPair.second );
+		Assert.assertEquals( 8L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 7L, (long)intIntPair.first );
-		Assert.assertEquals( 23L, (long)intIntPair.second );
+		Assert.assertEquals( 7L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 23L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 7 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 8 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 12L, (long)intIntPair.first );
-		Assert.assertEquals( 24L, (long)intIntPair.second );
+		Assert.assertEquals( 12L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 24L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 9 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 11L, (long)intIntPair.first );
-		Assert.assertEquals( 11L, (long)intIntPair.second );
+		Assert.assertEquals( 11L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 11L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 10 );		
@@ -549,14 +548,14 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 4L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 5L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 5L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 2 );		
@@ -565,32 +564,32 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 8L, (long)intIntPair.first );
-		Assert.assertEquals( 1L, (long)intIntPair.second );
+		Assert.assertEquals( 8L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 7L, (long)intIntPair.first );
-		Assert.assertEquals( 23L, (long)intIntPair.second );
+		Assert.assertEquals( 7L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 23L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 12L, (long)intIntPair.first );
-		Assert.assertEquals( 24L, (long)intIntPair.second );
+		Assert.assertEquals( 12L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 24L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 7 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 11L, (long)intIntPair.first );
-		Assert.assertEquals( 11L, (long)intIntPair.second );
+		Assert.assertEquals( 11L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 11L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 8 );		
@@ -607,14 +606,14 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 8L, (long)intIntPair.first );
-		Assert.assertEquals( 1L, (long)intIntPair.second );
+		Assert.assertEquals( 8L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 1L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 5L, (long)intIntPair.first );
-		Assert.assertEquals( 5L, (long)intIntPair.second );
+		Assert.assertEquals( 5L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 5L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 2 );		
@@ -623,20 +622,20 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 3 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 7L, (long)intIntPair.first );
-		Assert.assertEquals( 23L, (long)intIntPair.second );
+		Assert.assertEquals( 7L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 23L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 4 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 2L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 5 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 6 );		
@@ -653,8 +652,8 @@ public class MapStlTest {
 
 		MapStlNode<Integer, Integer> mapStlNode = mapStlNodeList.get( 0 );		
 		Pair<Integer, Integer> intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 10L, (long)intIntPair.first );
-		Assert.assertEquals( 12L, (long)intIntPair.second );
+		Assert.assertEquals( 10L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( 12L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 3L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 1 );		
@@ -663,8 +662,8 @@ public class MapStlTest {
 
 		mapStlNode = mapStlNodeList.get( 2 );		
 		intIntPair = mapStlNode.getKeyValuePair();
-		Assert.assertEquals( 9L, (long)intIntPair.first );
-		Assert.assertEquals( -4L, (long)intIntPair.second );
+		Assert.assertEquals( 9L, (long)intIntPair.getLeft() );
+		Assert.assertEquals( -4L, (long)intIntPair.getRight() );
 		Assert.assertEquals( 1L, mapStlNode.getHeight() );
 
 		mapStlNode = mapStlNodeList.get( 3 );		
@@ -681,7 +680,7 @@ public class MapStlTest {
 		
 		while(  !mapIterator.equals( end )  )
 		{
-			Assert.assertEquals(  (long)integerArrayList.get( ix ), (long)mapIterator.dereference().first.longValue()  );
+			Assert.assertEquals(  (long)integerArrayList.get( ix ), mapIterator.dereference().getLeft().longValue()  );
 			mapIterator.increment();
 			++ix;
 		}
@@ -691,7 +690,7 @@ public class MapStlTest {
 	@Test
 	public void insertTest()
 	{
-		MapStl< Integer, Integer > mapStl = new MapStl< Integer, Integer >( new IntegerComparator() );
+		MapStl< Integer, Integer > mapStl = new MapStl<>( new IntegerComparator() );
 
 		mapStl.insert(  0,  5 );
 		test0( mapStl );
@@ -723,7 +722,7 @@ public class MapStlTest {
 		long ix = 0;
 		while(  !mapIterator.equals( end )  )
 		{
-			Assert.assertEquals( ix, mapIterator.dereference().first.longValue() );
+			Assert.assertEquals( ix, mapIterator.dereference().getLeft().longValue() );
 			mapIterator.increment();
 			++ix;
 		}
@@ -733,7 +732,7 @@ public class MapStlTest {
 		ix = 12;
 		while(  !reverseMapIterator.equals( rend )  )
 		{
-			Assert.assertEquals( ix, reverseMapIterator.dereference().first.longValue() );
+			Assert.assertEquals( ix, reverseMapIterator.dereference().getLeft().longValue() );
 			reverseMapIterator.increment();
 			--ix;
 		}
@@ -745,8 +744,8 @@ public class MapStlTest {
 		}
 		
 		mapIterator = mapStl.find( 6 );
-		Assert.assertEquals( 6L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals( -6L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals( 6L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals( -6L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 		testDelete6( mapStl );
 
@@ -754,8 +753,8 @@ public class MapStlTest {
 		checkMap( mapStl, integerArrayList );
 		
 		mapIterator = mapStl.find( 0 );
-		Assert.assertEquals( 0L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals( 5L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals( 0L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals( 5L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 		testDelete0( mapStl );
 
@@ -763,13 +762,13 @@ public class MapStlTest {
 		checkMap( mapStl, integerArrayList );
 
 		mapIterator = mapStl.find( 1 );
-		Assert.assertEquals( 1L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals( 7L, mapIterator.dereference().second.longValue() );		
+		Assert.assertEquals( 1L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals( 7L, mapIterator.dereference().getRight().longValue() );		
 		mapStl.erase( mapIterator );
 
 		mapIterator = mapStl.find( 2 );
-		Assert.assertEquals( 2L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals(-1L, mapIterator.dereference().second.longValue() );		
+		Assert.assertEquals( 2L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals(-1L, mapIterator.dereference().getRight().longValue() );		
 		mapStl.erase( mapIterator );
 		testDelete1_2( mapStl );
 
@@ -778,13 +777,13 @@ public class MapStlTest {
 		checkMap( mapStl, integerArrayList );
 
 		mapIterator = mapStl.find( 3 );
-		Assert.assertEquals( 3L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals(15L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals( 3L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals(15L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 
 		mapIterator = mapStl.find( 4 );
-		Assert.assertEquals( 4L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals( 6L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals( 4L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals( 6L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 		testDelete3_4( mapStl );
 
@@ -793,13 +792,13 @@ public class MapStlTest {
 		checkMap( mapStl, integerArrayList );
 
 		mapIterator = mapStl.find( 12 );
-		Assert.assertEquals(12L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals(24L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals(12L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals(24L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 
 		mapIterator = mapStl.find( 11 );
-		Assert.assertEquals(11L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals(11L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals(11L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals(11L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 		testDelete11_12( mapStl );
 
@@ -808,18 +807,18 @@ public class MapStlTest {
 		checkMap( mapStl, integerArrayList );
 
 		mapIterator = mapStl.find( 8 );
-		Assert.assertEquals(8L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals(1L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals(8L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals(1L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 
 		mapIterator = mapStl.find( 7 );
-		Assert.assertEquals( 7L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals(23L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals( 7L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals(23L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 		
 		mapIterator = mapStl.find( 5 );
-		Assert.assertEquals( 5L, mapIterator.dereference().first.longValue() );
-		Assert.assertEquals( 5L, mapIterator.dereference().second.longValue() );
+		Assert.assertEquals( 5L, mapIterator.dereference().getLeft().longValue() );
+		Assert.assertEquals( 5L, mapIterator.dereference().getRight().longValue() );
 		mapStl.erase( mapIterator );
 		testDelete8_7_5( mapStl );
 	}
@@ -827,7 +826,7 @@ public class MapStlTest {
 	@Test
 	public void iterationTest()
 	{
-		MapStl<Integer, Integer> mapStl = new MapStl<Integer, Integer>(new IntegerComparator());
+		MapStl<Integer, Integer> mapStl = new MapStl<>(new IntegerComparator());
 		
 		Assert.assertTrue(mapStl.empty());
 		
@@ -851,7 +850,7 @@ public class MapStlTest {
 		Assert.assertEquals(mapRit, mapStl.rbegin());
 		
 		mapItr = mapStl.find(2);
-		Assert.assertEquals(new Pair<Integer, Integer>(2,1), mapItr.dereference());
+		Assert.assertEquals(Pair.of(2,1), mapItr.dereference());
 		
 		mapStl.erase(mapItr);
 		Assert.assertEquals(4, mapStl.size());
@@ -860,25 +859,25 @@ public class MapStlTest {
 		Assert.assertEquals(mapItr_end, mapItr);
 		
 		mapItr = mapStl.lower_bound(6);
-		Assert.assertEquals(new Pair<Integer, Integer>(6,3), mapItr.dereference());
+		Assert.assertEquals(Pair.of(6,3), mapItr.dereference());
 
 		mapItr = mapStl.lower_bound(9);
 		Assert.assertEquals(mapItr_end, mapItr);
 		
 		mapItr = mapStl.lower_bound(-1);
-		Assert.assertEquals(new Pair<Integer, Integer>(0,0), mapItr.dereference());
+		Assert.assertEquals(Pair.of(0,0), mapItr.dereference());
 		
 		mapItr = mapStl.lower_bound(7);
-		Assert.assertEquals(new Pair<Integer, Integer>(8,4), mapItr.dereference());
+		Assert.assertEquals(Pair.of(8,4), mapItr.dereference());
 		
 		mapItr = mapStl.upper_bound(0);
-		Assert.assertEquals(new Pair<Integer, Integer>(4,2), mapItr.dereference());
+		Assert.assertEquals(Pair.of(4,2), mapItr.dereference());
 		
 		mapItr = mapStl.upper_bound(8);
 		Assert.assertEquals(mapItr_end, mapItr);
 
 		mapItr = mapStl.upper_bound(7);
-		Assert.assertEquals(new Pair<Integer, Integer>(8,4), mapItr.dereference());
+		Assert.assertEquals(Pair.of(8,4), mapItr.dereference());
 	}
 	
 	// EXPOSES BUG

@@ -4,7 +4,9 @@ import java.util.Comparator;
 
 import com.geometricmethods.stl.iterator.ForwardIterator;
 import com.geometricmethods.stl.map.MapStlNode.NodeType;
-import com.geometricmethods.stl.support.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
+
 
 public class MapStl<K,V> {
 
@@ -82,7 +84,7 @@ public class MapStl<K,V> {
 		{
 			public int compare( Pair<K,V> p1, Pair<K,V> p2 )
 			{
-				return comparator.compare( p1.first, p2.first );
+				return comparator.compare( p1.getLeft(), p2.getLeft() );
 			}
 		};
 	}
@@ -108,18 +110,18 @@ public class MapStl<K,V> {
 		{
 			return null;
 		}
-		if (  comparator.compare( key, node.getKeyValuePair().first ) == 0  )
+		if (  comparator.compare( key, node.getKeyValuePair().getLeft() ) == 0  )
 		{
-			return new Pair< MapStlNode<K,V>, Integer >( node, 0 );
+			return Pair.of( node, 0 );
 		}
 		
 		MapStlNode<K,V> parent = node.getParent();
 		while( parent != null )
 		{
-			int comp = comparator.compare( key, parent.getKeyValuePair().first );
+			int comp = comparator.compare( key, parent.getKeyValuePair().getLeft() );
 			if ( comp == 0 )
 			{
-				return new Pair< MapStlNode<K,V>, Integer >( parent, 0 );
+				return Pair.of( parent, 0 );
 			}
 			
 			if ( node.getIsRightChild() && comp > 0 || !node.getIsRightChild() && comp < 0 )
@@ -138,16 +140,16 @@ public class MapStl<K,V> {
 		int comp = 0;
 		while( node != null )
 		{
-			comp = node.getNodeType() == MapStlNode.NodeType.DATA ? comparator.compare( key , node.getKeyValuePair().first ) : node.getNodeType().getValue();
+			comp = node.getNodeType() == MapStlNode.NodeType.DATA ? comparator.compare( key , node.getKeyValuePair().getLeft() ) : node.getNodeType().getValue();
 			if ( comp == 0 )
 			{
-				return new Pair< MapStlNode<K,V>, Integer >( node, 0 );
+				return Pair.of( node, 0 );
 			}
 
 			parent = node;
 			node = comp < 0 ? node.getLeftChild() : node.getRightChild();
 		}
-		return new Pair< MapStlNode<K,V>, Integer >( parent, comp );		
+		return Pair.of( parent, comp );
 	}
 		
 	private Pair< MapStlNode<K,V>, Integer > search( K key )
@@ -157,15 +159,15 @@ public class MapStl<K,V> {
 	
 	private Pair< MapIterator<K,V>,Boolean > insert( K key, V value, Pair< MapStlNode<K,V>, Integer > nodeIntegerPair )
 	{
-		MapStlNode<K,V> mapStlNode = nodeIntegerPair.first;
+		MapStlNode<K,V> mapStlNode = nodeIntegerPair.getLeft();
 		
-		if ( nodeIntegerPair.second == 0 )
+		if ( nodeIntegerPair.getRight() == 0 )
 		{
-			return new Pair< MapIterator<K,V>, Boolean >(  new MapIterator<K,V>( mapStlNode ), false  );
+			return Pair.of(  new MapIterator<K,V>( mapStlNode ), false  );
 		}
 		
 		Pair< MapIterator<K,V>, Boolean > retval =
-				new Pair< MapIterator<K,V>, Boolean >(   new MapIterator<K,V>(  new MapStlNode<K,V>( key, value, mapStlNode, nodeIntegerPair.second > 0 )  ), true   );
+				Pair.of(   new MapIterator<K,V>(  new MapStlNode<K,V>( key, value, mapStlNode, nodeIntegerPair.getRight() > 0 )  ), true   );
 
 		mapStlNode.balanceTree();
 		if ( root.getParent() != null )
@@ -184,17 +186,17 @@ public class MapStl<K,V> {
 
 	public Pair< MapIterator<K,V>, Boolean > insert( Pair<K,V> pair )
 	{
-		return insert( pair.first, pair.second );
+		return insert( pair.getLeft(), pair.getRight() );
 	}
 
 	public MapIterator<K,V> insert( MapIterator<K,V> mapIterator, K key, V value )
 	{
-		return insert(  key, value, search_up( key, mapIterator.getNode() )  ).first;
+		return insert(  key, value, search_up( key, mapIterator.getNode() )  ).getLeft();
 	}
 	
 	public MapIterator<K,V> insert( MapIterator<K,V> mapIterator, Pair<K,V> pair )
 	{
-		return insert(  pair.first, pair.second, search_up( pair.first, mapIterator.getNode() )  ).first;
+		return insert(  pair.getLeft(), pair.getRight(), search_up( pair.getLeft(), mapIterator.getNode() )  ).getLeft();
 	}
 
 	public void insert( ForwardIterator<Pair<K,V>> first, ForwardIterator<Pair<K,V>> last )
@@ -230,9 +232,9 @@ public class MapStl<K,V> {
 	
 	public int erase( K key ) {
 		Pair< MapStlNode<K,V>, Integer > nodeIntegerPair = search( key );
-		if ( nodeIntegerPair.second == 0 )
+		if ( nodeIntegerPair.getRight() == 0 )
 		{
-			erase( nodeIntegerPair.first );
+			erase( nodeIntegerPair.getLeft() );
 			return 1;
 		}
 		return 0;
@@ -263,32 +265,32 @@ public class MapStl<K,V> {
 	public MapIterator<K,V> find( K key )
 	{
 		Pair< MapStlNode<K,V>, Integer > nodeIntegerPair = search( key );
-		return nodeIntegerPair.second == 0 ? new MapIterator<K,V>( nodeIntegerPair.first) : end();
+		return nodeIntegerPair.getRight() == 0 ? new MapIterator<K,V>( nodeIntegerPair.getLeft()) : end();
 	}
 	
 	public int count( K key )
 	{
 		Pair< MapStlNode<K,V>, Integer > nodeIntegerPair = search( key );
-		return nodeIntegerPair.second == 0 ? 1 : 0;
+		return nodeIntegerPair.getRight() == 0 ? 1 : 0;
 	}
 	
 	public MapIterator<K,V> lower_bound( K key )
 	{
 		Pair< MapStlNode<K,V>, Integer > nodeIntegerPair = search( key );
-		return new MapIterator<K,V>( nodeIntegerPair.second <= 0 ? nodeIntegerPair.first : nodeIntegerPair.first.getNext() );
+		return new MapIterator<K,V>( nodeIntegerPair.getRight() <= 0 ? nodeIntegerPair.getLeft() : nodeIntegerPair.getLeft().getNext() );
 	}
 
 	public MapIterator<K,V> upper_bound( K key )
 	{
 		Pair< MapStlNode<K,V>, Integer > nodeIntegerPair = search( key );
-		return new MapIterator<K,V>( nodeIntegerPair.second >= 0 ? nodeIntegerPair.first.getNext() : nodeIntegerPair.first );
+		return new MapIterator<K,V>( nodeIntegerPair.getRight() >= 0 ? nodeIntegerPair.getLeft().getNext() : nodeIntegerPair.getLeft() );
 	}
 
 	public Pair< MapIterator<K,V>, MapIterator<K,V> > equal_range( K key )
 	{
 		Pair< MapStlNode<K,V>, Integer > nodeIntegerPair = search( key );
-		return nodeIntegerPair.second == 0 ?
-				new Pair< MapIterator<K,V>, MapIterator<K,V> >(  new MapIterator<K,V>( nodeIntegerPair.first ), new MapIterator<K,V>( nodeIntegerPair.first.getNext() )  ) :
-				new Pair< MapIterator<K,V>, MapIterator<K,V> >( end(), end() );
+		return nodeIntegerPair.getRight() == 0 ?
+				Pair.of(  new MapIterator<K,V>( nodeIntegerPair.getLeft() ), new MapIterator<K,V>( nodeIntegerPair.getLeft().getNext() )  ) :
+				Pair.of( end(), end() );
 	}
 }

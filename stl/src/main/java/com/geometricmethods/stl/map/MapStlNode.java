@@ -1,6 +1,6 @@
 package com.geometricmethods.stl.map;
 
-import com.geometricmethods.stl.support.Pair;
+import org.apache.commons.lang3.tuple.Pair;
 
 
 public class MapStlNode<K,V>
@@ -46,7 +46,7 @@ public class MapStlNode<K,V>
 	MapStlNode( NodeType nodeType, K key, V value )
 	{
 		this.nodeType = nodeType;
-		this.keyValuePair = new Pair<K,V>( key, value );
+		this.keyValuePair = Pair.of( key, value );
 	}
 	
 	public MapStlNode( K key, V value )

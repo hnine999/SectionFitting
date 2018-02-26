@@ -4,7 +4,8 @@ import java.util.Comparator;
 
 import com.geometricmethods.stl.iterator.ForwardIterator;
 import com.geometricmethods.stl.set.SetStlNode.NodeType;
-import com.geometricmethods.stl.support.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 public class SetStl<K> {
 
@@ -17,9 +18,9 @@ public class SetStl<K> {
 	public SetStl( Comparator<K> comparator )
 	{
 		this.comparator = comparator;
-		root = head = new SetStlNode<K>( SetStlNode.NodeType.BEGIN );
+		root = head = new SetStlNode<>( SetStlNode.NodeType.BEGIN );
 		root.setHeight( 2 );
-		root.setRightChild(  tail = new SetStlNode<K>( SetStlNode.NodeType.END, null, root, true )  );
+		root.setRightChild(  tail = new SetStlNode<>( SetStlNode.NodeType.END, null, root, true )  );
 	}
 
 	public SetStl( ForwardIterator<K> first, ForwardIterator<K> last, Comparator<K> comparator )
@@ -48,22 +49,22 @@ public class SetStl<K> {
 	
 	public SetIterator<K> begin()
 	{
-		return new SetIterator<K>( head.getNext() );
+		return new SetIterator<>( head.getNext() );
 	}
 	
 	public SetIterator<K> end()
 	{
-		return new SetIterator<K>( tail );
+		return new SetIterator<>( tail );
 	}
 	
 	public ReverseSetIterator<K> rbegin()
 	{
-		return new ReverseSetIterator<K>( tail.getPrevious() );
+		return new ReverseSetIterator<>( tail.getPrevious() );
 	}
 
 	public ReverseSetIterator<K> rend()
 	{
-		return new ReverseSetIterator<K>( head );
+		return new ReverseSetIterator<>( head );
 	}
 
 	public int size()
@@ -88,7 +89,7 @@ public class SetStl<K> {
 
 	public void swap( SetStl<K> other )
 	{
-		SetStl<K> otherNew = new SetStl<K>( key_comp() );
+		SetStl<K> otherNew = new SetStl<>( key_comp() );
 		otherNew.insert( begin(), end() );
 		
 		clear();
@@ -101,7 +102,7 @@ public class SetStl<K> {
 		other.size = otherNew.size;
 	}
 	
-	private Pair< SetStlNode<K>, Integer > search_up( K key, SetStlNode<K> node )
+	private Pair< SetStlNode<K>, Integer > search_up(K key, SetStlNode<K> node )
 	{
 		if ( node == null )
 		{
@@ -109,7 +110,7 @@ public class SetStl<K> {
 		}
 		if (  comparator.compare( key, node.getValue() ) == 0  )
 		{
-			return new Pair< SetStlNode<K>, Integer >( node, 0 );
+			return Pair.of( node, 0 );
 		}
 		
 		SetStlNode<K> parent = node.getParent();
@@ -118,7 +119,7 @@ public class SetStl<K> {
 			int comp = comparator.compare( key, parent.getValue() );
 			if ( comp == 0 )
 			{
-				return new Pair< SetStlNode<K>, Integer >( parent, 0 );
+				return Pair.of( parent, 0 );
 			}
 			
 			if ( node.getIsRightChild() && comp > 0 || !node.getIsRightChild() && comp < 0 )
@@ -140,13 +141,13 @@ public class SetStl<K> {
 			comp = node.getNodeType() == SetStlNode.NodeType.DATA ? comparator.compare( key , node.getValue() ) : node.getNodeType().getValue();
 			if ( comp == 0 )
 			{
-				return new Pair<>( node, 0 );
+				return Pair.of( node, 0 );
 			}
 
 			parent = node;
 			node = comp < 0 ? node.getLeftChild() : node.getRightChild();
 		}
-		return new Pair<>( parent, comp );
+		return Pair.of( parent, comp );
 	}
 		
 	private Pair< SetStlNode<K>, Integer > search( K key )
@@ -156,15 +157,15 @@ public class SetStl<K> {
 	
 	private Pair< SetIterator<K>,Boolean > insert( K key, Pair< SetStlNode<K>, Integer > nodeIntegerPair )
 	{
-		SetStlNode<K> mapStlNode = nodeIntegerPair.first;
+		SetStlNode<K> mapStlNode = nodeIntegerPair.getLeft();
 		
-		if ( nodeIntegerPair.second == 0 )
+		if ( nodeIntegerPair.getRight() == 0 )
 		{
-			return new Pair<>(  new SetIterator<K>( mapStlNode ), false  );
+			return Pair.of(  new SetIterator<>( mapStlNode ), false  );
 		}
 		
 		Pair< SetIterator<K>, Boolean > retval =
-				new Pair<>(   new SetIterator<>(  new SetStlNode<>( key, mapStlNode, nodeIntegerPair.second > 0 )  ), true   );
+				Pair.of(   new SetIterator<>(  new SetStlNode<>( key, mapStlNode, nodeIntegerPair.getRight() > 0 )  ), true   );
 
 		mapStlNode.balanceTree();
 		if ( root.getParent() != null )
@@ -183,7 +184,7 @@ public class SetStl<K> {
 
 	public SetIterator<K> insert( SetIterator<K> mapIterator, K key )
 	{
-		return insert(  key, search_up( key, mapIterator.getNode() )  ).first;
+		return insert(  key, search_up( key, mapIterator.getNode() )  ).getLeft();
 	}
 	
 	public void insert( ForwardIterator<K> first, ForwardIterator<K> last )
@@ -219,9 +220,9 @@ public class SetStl<K> {
 	
 	public int erase( K key ) {
 		Pair< SetStlNode<K>, Integer > nodeIntegerPair = search( key );
-		if ( nodeIntegerPair.second == 0 )
+		if ( nodeIntegerPair.getRight() == 0 )
 		{
-			erase( nodeIntegerPair.first );
+			erase( nodeIntegerPair.getLeft() );
 			return 1;
 		}
 		return 0;
@@ -256,32 +257,32 @@ public class SetStl<K> {
 	public SetIterator<K> find( K key )
 	{
 		Pair< SetStlNode<K>, Integer > nodeIntegerPair = search( key );
-		return nodeIntegerPair.second == 0 ? new SetIterator<K>( nodeIntegerPair.first) : end();
+		return nodeIntegerPair.getRight() == 0 ? new SetIterator<>( nodeIntegerPair.getLeft()) : end();
 	}
 	
 	public int count( K key )
 	{
 		Pair< SetStlNode<K>, Integer > nodeIntegerPair = search( key );
-		return nodeIntegerPair.second == 0 ? 1 : 0;
+		return nodeIntegerPair.getRight() == 0 ? 1 : 0;
 	}
 	
 	public SetIterator<K> lower_bound( K key )
 	{
 		Pair< SetStlNode<K>, Integer > nodeIntegerPair = search( key );
-		return new SetIterator<K>( nodeIntegerPair.second >= 0 ? nodeIntegerPair.first : nodeIntegerPair.first.getNext() );
+		return new SetIterator<K>( nodeIntegerPair.getRight() >= 0 ? nodeIntegerPair.getLeft() : nodeIntegerPair.getLeft().getNext() );
 	}
 
 	public SetIterator<K> upper_bound( K key )
 	{
 		Pair< SetStlNode<K>, Integer > nodeIntegerPair = search( key );
-		return new SetIterator<K>( nodeIntegerPair.second <= 0 ? nodeIntegerPair.first.getNext() : nodeIntegerPair.first );
+		return new SetIterator<K>( nodeIntegerPair.getRight() <= 0 ? nodeIntegerPair.getLeft().getNext() : nodeIntegerPair.getLeft() );
 	}
 
 	public Pair< SetIterator<K>, SetIterator<K> > equal_range( K key )
 	{
 		Pair< SetStlNode<K>, Integer > nodeIntegerPair = search( key );
-		return nodeIntegerPair.second == 0 ?
-				new Pair< SetIterator<K>, SetIterator<K> >(  new SetIterator<K>( nodeIntegerPair.first ), new SetIterator<K>( nodeIntegerPair.first.getNext() )  ) :
-				new Pair< SetIterator<K>, SetIterator<K> >( end(), end() );
+		return nodeIntegerPair.getRight() == 0 ?
+		       Pair.of(  new SetIterator<K>( nodeIntegerPair.getLeft() ), new SetIterator<K>( nodeIntegerPair.getLeft().getNext() )  ) :
+		       Pair.of( end(), end() );
 	}
 }

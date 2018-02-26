@@ -2,7 +2,9 @@ package com.geometricmethods.stl.map;
 
 import com.geometricmethods.stl.iterator.BidirectionalIterator;
 import com.geometricmethods.stl.iterator.ForwardIterator;
-import com.geometricmethods.stl.support.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
+
 
 public class MapIterator<K,V> implements BidirectionalIterator<Pair<K,V>>
 {

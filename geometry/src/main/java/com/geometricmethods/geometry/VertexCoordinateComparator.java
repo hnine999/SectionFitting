@@ -2,8 +2,6 @@ package com.geometricmethods.geometry;
 
 import java.util.Comparator;
 
-import com.geometricmethods.geometry.Vertex;
-
 public class VertexCoordinateComparator implements Comparator<Vertex> {
 
 	private static VertexCoordinateComparator vertexCoordinateComparator = new VertexCoordinateComparator();

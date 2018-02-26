@@ -9,8 +9,8 @@
 	</parent>
 
 	<!-- The Basics -->
-	<name>SectionFitting Library :: Geometry</name>
-	<artifactId>geometry</artifactId>
+	<name>SectionFitting Library :: IntersectionDetection</name>
+	<artifactId>intersectiondetection</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -22,6 +22,15 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>stl</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>geometry</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
 	</dependencies>
 </project>
